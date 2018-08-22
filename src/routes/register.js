@@ -1,5 +1,5 @@
 import React from 'react';
-import {Message, Input, Container, Header, Button} from 'semantic-ui-react';
+import {Form ,Message, Input, Container, Header, Button} from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 
@@ -59,28 +59,38 @@ class Register extends React.Component {
     return (
       <Container text>
         <Header as="h2">Register</Header>
-        <Input
-          error={!!usernameError}
-          name="username"
-          onChange={this.onChange}
-          value={username}
-          placeholder="Username"
-          fluid
-        />
-        <Input error={!!emailError} name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
-        <Input
-          error={!!passwordError}
-          name="password"
-          onChange={this.onChange}
-          value={password}
-          type="password"
-          placeholder="Password"
-          fluid
-        />
-        <Button onClick={this.onSubmit}>Submit</Button>
-        {usernameError || emailError || passwordError ? (
-          <Message error header="There was some errors with your submission" list={errorList} />
-        ) : null}
+        <Form>
+          <Form.Field>
+          <Input
+            error={!!usernameError}
+            name="username"
+            onChange={this.onChange}
+            value={username}
+            placeholder="Username"
+            fluid
+          />
+          </Form.Field>
+          <Form.Field>
+          <Input error={!!emailError} name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
+          </Form.Field>
+          <Form.Field>
+          <Input
+            error={!!passwordError}
+            name="password"
+            onChange={this.onChange}
+            value={password}
+            type="password"
+            placeholder="Password"
+            fluid
+          />
+          </Form.Field>
+          <Form.Field>
+            <Button onClick={this.onSubmit}>Submit</Button>
+          </Form.Field>
+          {usernameError || emailError || passwordError ? (
+            <Message error header="There was some errors with your submission" list={errorList} />
+          ) : null}
+        </Form>
       </Container>
     );
   }

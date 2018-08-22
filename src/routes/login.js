@@ -1,7 +1,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import {extendObservable} from 'mobx';
-import {Input, Container, Header, Button} from 'semantic-ui-react';
+import {Form, Input, Container, Header, Button} from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 
@@ -40,16 +40,24 @@ class Login extends React.Component {
     return(
       <Container text>
         <Header as="h2">Login</Header>
-        <Input  name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
-        <Input
-          name="password"
-          onChange={this.onChange}
-          value={password}
-          type="password"
-          placeholder="Password"
-          fluid
-        />
-        <Button onClick={this.onSubmit}>Submit</Button>
+        <Form>
+          <Form.Field>
+            <Input  name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
+            </Form.Field>
+            <Form.Field>
+            <Input
+              name="password"
+              onChange={this.onChange}
+              value={password}
+              type="password"
+              placeholder="Password"
+              fluid
+            />
+            </Form.Field>
+            <Form.Field>
+            <Button onClick={this.onSubmit}>Submit</Button>
+            </Form.Field>
+          </Form>
       </Container>
     );
   }
